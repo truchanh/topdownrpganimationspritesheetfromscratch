@@ -43,10 +43,9 @@ class Player(pg.sprite.Sprite):
             self.current_animation = self.anims['die']
             
         if self.current_direction == 'left':
-            self.image = pg.transform.flip(
+            self.image = pg.transform.flip(  #flip horizontally
                 self.sheet.subsurface(self.current_animation[self.index]),1,0)
         else:
-            
             self.image = self.sheet.subsurface(self.current_animation[self.index])
 
         bound_rect = self.image.get_bounding_rect(min_alpha=1)
@@ -54,7 +53,7 @@ class Player(pg.sprite.Sprite):
         raw_img_w, raw_img_h = raw_image.get_size()
         
         ##two required attr: sprite.image and sprite.rect
-        self.image = pg.transform.scale(raw_image,(raw_img_w*2,raw_img_h*2))
+        self.image = pg.transform.scale(raw_image,(raw_img_w*3,raw_img_h*3))
         self.rect = self.image.get_rect(center=pos)
 
         self.direction = pg.Vector2()
